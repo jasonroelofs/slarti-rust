@@ -1,0 +1,12 @@
+{
+  "window": {
+    "width": 1024,
+    "height": 768,
+    "fullscreen": true
+  },
+
+  "input": {
+    "MoveForward":  "E",
+    "MoveBackward": "D"
+  }
+}

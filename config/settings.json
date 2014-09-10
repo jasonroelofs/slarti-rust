@@ -1,0 +1,18 @@
+{
+  "window": {
+    "width": 1024,
+    "height": 768,
+    "fullscreen": false
+  },
+
+  "input": {
+    "Quit":         "Q",
+    "MoveForward":  "E",
+    "MoveBackward": "D",
+    "MoveLeft":     "S",
+    "MoveRight":    "F",
+
+    "ZoomIn":       "I",
+    "ZoomOut":      "O"
+  }
+}
