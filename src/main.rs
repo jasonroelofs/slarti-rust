@@ -47,8 +47,7 @@ fn main() {
 
     let game_config = GameConfig::new(config_store.path("settings.json").unwrap());
 
-    let input_map = InputMap::new(); //game_config.input);
-    let player_controller = PlayerController::new(); // input_map
+    let input_map = InputMap::new(game_config.input);
 
     let mut window = WindowSDL2::new(
         piston::shader_version::opengl::OpenGL_3_3,
