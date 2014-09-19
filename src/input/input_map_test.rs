@@ -19,14 +19,26 @@ fn press_keyboard(key : piston::input::keyboard::Key) -> piston::input::InputEve
     piston::input::Press(piston::input::Keyboard(key))
 }
 
+fn release_keyboard(key : piston::input::keyboard::Key) -> piston::input::InputEvent {
+    piston::input::Release(piston::input::Keyboard(key))
+}
+
 #[test]
 fn convert_piston_event_to_internal_event() {
     let map = InputMap::new(esdf_events());
 
-    assert_eq!(events::MoveForward, map.convert(press_keyboard(piston::input::keyboard::E)).unwrap());
-    assert_eq!(events::MoveBackward, map.convert(press_keyboard(piston::input::keyboard::D)).unwrap());
-    assert_eq!(events::MoveLeft, map.convert(press_keyboard(piston::input::keyboard::S)).unwrap());
-    assert_eq!(events::MoveRight, map.convert(press_keyboard(piston::input::keyboard::F)).unwrap());
+    assert_eq!(events::Pressed(events::MoveForward), map.convert(press_keyboard(piston::input::keyboard::E)).unwrap());
+    assert_eq!(events::Pressed(events::MoveBackward), map.convert(press_keyboard(piston::input::keyboard::D)).unwrap());
+    assert_eq!(events::Pressed(events::MoveLeft), map.convert(press_keyboard(piston::input::keyboard::S)).unwrap());
+    assert_eq!(events::Pressed(events::MoveRight), map.convert(press_keyboard(piston::input::keyboard::F)).unwrap());
+}
+
+#[test]
+fn converts_pressed_and_released_seperately() {
+    let map = InputMap::new(esdf_events());
+
+    assert_eq!(events::Pressed(events::MoveForward), map.convert(press_keyboard(piston::input::keyboard::E)).unwrap());
+    assert_eq!(events::Released(events::MoveBackward), map.convert(release_keyboard(piston::input::keyboard::D)).unwrap());
 }
 
 #[test]

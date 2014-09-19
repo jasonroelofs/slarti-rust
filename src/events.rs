@@ -1,8 +1,16 @@
+/// The states an Event can be in
+#[deriving(Clone, Show, PartialEq, Eq)]
+pub enum Event {
+    Pressed(EventType),
+    Released(EventType),
+    Repeated(EventType)
+}
+
 /// The list of Events that a user can trigger through
 /// normal action in the game. These get mapped to individual
 /// keys and input via input system and config files.
 #[deriving(Clone, Show, PartialEq, Eq)]
-pub enum Event {
+pub enum EventType {
     Unknown,
 
     Quit,
@@ -13,7 +21,7 @@ pub enum Event {
     MoveRight,
 }
 
-pub fn from_string(string : &String) -> Event {
+pub fn from_string(string : &String) -> EventType {
     match string.as_slice() {
         "Quit"          => Quit,
         "MoveForward"   => MoveForward,

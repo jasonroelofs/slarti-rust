@@ -8,7 +8,7 @@ use piston::input::keyboard::Key;
 use events;
 
 pub struct InputMap {
-    key_maps : HashMap<piston::input::keyboard::Key, events::Event>
+    key_maps : HashMap<piston::input::keyboard::Key, events::EventType>
 }
 
 impl InputMap {
@@ -35,7 +35,16 @@ impl InputMap {
         println!("Checking convert: {}", piston_event);
         match piston_event  {
             piston::input::Press(piston::input::Keyboard(key)) => {
-                self.key_maps.find_copy(&key)
+                match self.key_maps.find_copy(&key) {
+                    Some(e) => Some(events::Pressed(e)),
+                    None => None
+                }
+            },
+            piston::input::Release(piston::input::Keyboard(key)) => {
+                match self.key_maps.find_copy(&key) {
+                    Some(e) => Some(events::Released(e)),
+                    None => None
+                }
             },
             _ => { None },
         }
