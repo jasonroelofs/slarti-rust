@@ -1,15 +1,17 @@
-use events;
+use input::InputEvents;
+use camera::Camera;
 
 pub struct PlayerController {
-    id : i32
+    camera: Camera
 }
 
 impl PlayerController {
-    pub fn new() -> PlayerController {
-        PlayerController{ id: 4 }
+    pub fn new(camera : Camera) -> PlayerController {
+        PlayerController{ camera: camera }
     }
 
-    pub fn handle_event(&self, game_event : events::Event) {
-        println!("Handling event {}", game_event);
+    pub fn process_input(&self, events : InputEvents) {
+        println!("Handling events {}", events);
     }
+
 }

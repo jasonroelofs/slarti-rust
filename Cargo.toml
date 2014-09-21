@@ -17,10 +17,10 @@ git = "https://github.com/pistondevelopers/piston"
 
 git = "https://github.com/pistondevelopers/sdl2_game_window"
 
-[dependencies.gfx]
-
-git = "https://github.com/gfx-rs/gfx-rs"
-
 [dependencies.opengl_graphics]
 
 git = "https://github.com/pistondevelopers/opengl_graphics"
+
+[dependencies.nalgebra]
+
+git = "https://github.com/sebcrozet/nalgebra"
